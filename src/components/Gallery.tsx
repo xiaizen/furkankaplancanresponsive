@@ -69,22 +69,22 @@ export default function Gallery() {
       </div>
 
       <div
-        className="relative"
+        className="relative overflow-x-auto"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-black to-transparent z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-black to-transparent z-10"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
 
         <div
           id="slider"
-          className="flex gap-4 md:gap-6 overflow-x-hidden"
+          className="flex gap-3 md:gap-6"
           style={{ scrollBehavior: 'auto' }}
         >
           {duplicatedImages.map((image, index) => (
             <div
               key={index}
-              className="relative flex-shrink-0 w-[280px] md:w-[400px] h-[400px] md:h-[500px] group cursor-pointer overflow-hidden"
+              className="relative flex-shrink-0 w-[180px] sm:w-[220px] md:w-[320px] h-[220px] sm:h-[280px] md:h-[400px] group cursor-pointer overflow-hidden"
               onClick={() => setSelectedImage(index % images.length)}
             >
               <img
@@ -92,8 +92,8 @@ export default function Gallery() {
                 alt={image.title}
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-4 md:p-6">
-                <p className="text-white text-xl md:text-2xl font-bold tracking-wide">{image.title}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-2 sm:p-4 md:p-6">
+                <p className="text-white text-base sm:text-lg md:text-2xl font-bold tracking-wide">{image.title}</p>
               </div>
             </div>
           ))}
