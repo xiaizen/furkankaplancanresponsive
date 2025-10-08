@@ -20,29 +20,29 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="bg-zinc-950 py-16 md:py-24 px-4 md:px-6">
+  <section id="contact" className="bg-zinc-950 py-10 xs:py-14 sm:py-16 md:py-24 px-2 xs:px-4 md:px-6">
       <div
         ref={ref}
-        className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
+        className={`max-w-full sm:max-w-xl md:max-w-4xl mx-auto text-center transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8 tracking-tight">
+  <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 xs:mb-6 md:mb-8 tracking-tight">
           Get In Touch
         </h2>
-        <div className="h-1 w-24 bg-red-600 mx-auto mb-8 md:mb-12"></div>
-        <p className="text-lg md:text-xl text-gray-400 mb-12 md:mb-16">
+  <div className="h-1 w-12 xs:w-20 md:w-24 bg-red-600 mx-auto mb-4 xs:mb-8 md:mb-12"></div>
+  <p className="text-xs xs:text-sm sm:text-base md:text-xl text-gray-400 mb-6 xs:mb-12 md:mb-16">
           Ready to start your journey? Connect with me on social media or reach out directly.
         </p>
 
-        <div className="grid sm:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-6 md:gap-8 mb-4 xs:mb-8 md:mb-12">
           {socialLinks.map((social, index) => (
             <a
               key={index}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`bg-black border border-zinc-800 hover:border-red-600 p-6 md:p-8 transition-all duration-500 group ${
+              className={`bg-black border border-zinc-800 hover:border-red-600 p-3 xs:p-6 md:p-8 transition-all duration-500 group rounded-lg ${
                 isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const images = [
   {
@@ -27,11 +27,10 @@ const images = [
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
-
   const duplicatedImages = [...images, ...images];
 
   useEffect(() => {
-    const slider = document.getElementById('slider');
+    const slider = document.getElementById('gallery-slider');
     if (!slider || isPaused) return;
 
     const scrollWidth = slider.scrollWidth / 2;
@@ -69,7 +68,7 @@ export default function Gallery() {
       </div>
 
       <div
-        className="relative overflow-x-auto"
+        className="relative"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -77,14 +76,14 @@ export default function Gallery() {
         <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
 
         <div
-          id="slider"
-          className="flex gap-3 md:gap-6"
+          id="gallery-slider"
+          className="flex gap-2 sm:gap-3 md:gap-6 overflow-x-hidden px-1 sm:px-2 md:px-0"
           style={{ scrollBehavior: 'auto' }}
         >
           {duplicatedImages.map((image, index) => (
             <div
               key={index}
-              className="relative flex-shrink-0 w-[180px] sm:w-[220px] md:w-[320px] h-[220px] sm:h-[280px] md:h-[400px] group cursor-pointer overflow-hidden"
+              className="relative flex-shrink-0 w-[140px] xs:w-[160px] sm:w-[180px] md:w-[220px] lg:w-[320px] h-[140px] xs:h-[160px] sm:h-[180px] md:h-[280px] lg:h-[400px] group cursor-pointer overflow-hidden rounded-lg border border-zinc-800"
               onClick={() => setSelectedImage(index % images.length)}
             >
               <img
@@ -92,8 +91,8 @@ export default function Gallery() {
                 alt={image.title}
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-2 sm:p-4 md:p-6">
-                <p className="text-white text-base sm:text-lg md:text-2xl font-bold tracking-wide">{image.title}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-1 xs:p-2 sm:p-4 md:p-6">
+                <p className="text-white text-xs xs:text-sm sm:text-base md:text-lg lg:text-2xl font-bold tracking-wide">{image.title}</p>
               </div>
             </div>
           ))}
